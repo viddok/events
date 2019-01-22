@@ -25,3 +25,6 @@ Author: Евгений Родкин
 
 // Регистрация нового post-type Events
 require_once 'includes/post-type.php';
+
+// Регистрация метабокса с произвольными полями
+require_once 'includes/meta-box.php';
