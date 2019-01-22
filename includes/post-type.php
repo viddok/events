@@ -23,7 +23,7 @@ function register_post_types(){
 		'menu_position'       => 4,
 		'menu_icon'           => 'dashicons-groups',
 		'hierarchical'        => false, // Для обновления надо пересохранить настройки ЧПУ в Админке
-		'supports'            => array('title','custom-fields'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+		'supports'            => array('title'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => array(),
 		'has_archive'         => false,
 		'rewrite'             => true,
