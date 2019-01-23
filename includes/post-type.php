@@ -100,3 +100,47 @@ function true_post_type_help_tab() {
 	$screen->add_help_tab( $args );
 
 }
+
+// хук для регистрации
+add_action('init', 'create_taxonomy');
+function create_taxonomy(){
+	// список параметров:
+	register_taxonomy('events_category', 'events', array(
+		//'label'                 => '', // определяется параметром $labels->name
+		'labels'                => array(
+			'name'              => __( 'Рубрики событий', 'lang' ),
+			'singular_name'     => __( 'Рубрика событий', 'lang' ),
+			'search_items'      => __( 'Искать рубрики', 'lang' ),
+			'all_items'         => __( 'Все рубрики', 'lang' ),
+			'view_item '        => __( 'Просмотреть рубрику', 'lang' ),
+			'parent_item'       => __( 'Родительскае рубрика', 'lang' ),
+			'parent_item_colon' => __( 'Родительская рубрика', 'lang' ) . ':',
+			'edit_item'         => __( 'Редактировать рубрику', 'lang' ),
+			'update_item'       => __( 'Обновить рубрику', 'lang' ),
+			'add_new_item'      => __( 'Добавить новую рубрику', 'lang' ),
+			'new_item_name'     => __( 'Имя новой рубрики', 'lang' ),
+			'menu_name'         => __( 'Рубрики событий', 'lang' ),
+		),
+		//'description'           => 'Некоторое описание', // описание таксономии
+		'public'                => true,
+		//'publicly_queryable'    => null, // равен аргументу public
+		'show_in_nav_menus'     => true, // равен аргументу public
+		'show_ui'               => true, // равен аргументу public
+		'show_in_menu'          => true, // равен аргументу show_ui
+		'show_tagcloud'         => true, // равен аргументу show_ui
+		'show_in_rest'          => false, // добавить в REST API
+		//'rest_base'             => null, // Ярлык в REST API. По умолчанию, название таксономии.
+		'hierarchical'          => true,
+		'update_count_callback' => '',
+		'rewrite'               => array(
+			'slug'          => '',
+			'hierarchical'  => true,
+		),
+		//'query_var'             => $taxonomy, // название параметра запроса
+		'capabilities'          => array(),
+		'meta_box_cb'           => null, // callback функция. Отвечает за html код метабокса (с версии 3.8): post_categories_meta_box или post_tags_meta_box. Если указать false, то метабокс будет отключен вообще
+		'show_admin_column'     => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
+		'_builtin'              => false,
+		'show_in_quick_edit'    => null, // по умолчанию значение show_ui
+	) );
+}
