@@ -15,7 +15,7 @@ function events_settings_meta_box( $post ){
 	</p>
 	<p>
 		<label><?php _e( 'Дата события', 'lang' ); ?>: <br />
-			<input type="text" name="event[date]" value="<?php echo get_post_meta($post->ID, 'date', 1); ?>" style="width:50%" placeholder="25.01.2019" />
+			<input type="text" name="event[date]" value="<?php echo get_post_meta($post->ID, 'date', 1); ?>" style="width:50%" placeholder="2019-01-15" />
 		</label>
 	</p>
 
