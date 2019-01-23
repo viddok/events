@@ -28,6 +28,3 @@ require_once 'includes/post-type.php';
 
 // Регистрация метабокса с произвольными полями
 require_once 'includes/meta-box.php';
-
-// Регистрация новой таксономии для post-type Events
-require_once 'includes/taxonomy.php';
