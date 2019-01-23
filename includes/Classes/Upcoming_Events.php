@@ -36,21 +36,27 @@ class Upcoming_Events extends \WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
+		$date   = strtotime( date( 'd-m-Y' ) );
 		$q_args = array(
-			'post_type'  => 'events',
-			'posts_per_page'    => $posts_per_page,
-			'meta_query' => array(
+			'post_type'      => 'events',
+			'posts_per_page' => $posts_per_page,
+			'meta_query'     => array(
+				'relation' => 'AND',
 				array(
-					'key' => 'status',
+					'key'   => 'status',
 					'value' => $event_status,
 				),
+				array(
+					'key'     => 'date',
+					'value'   => $date,
+					'compare' => '>='
+				),
 			),
-			'meta_key' => 'date',
-			'orderby'  => 'meta_value',
-			'order'    => 'ASC'
+			'meta_key'       => 'date',
+			'orderby'        => 'meta_value',
+			'order'          => 'ASC'
 		);
 
-		//$q = new \WP_Query( "posts_per_page=$posts_per_page&post_type=events" );
 		$q = new \WP_Query( $q_args );
 		if ( $q->have_posts() ):
 			?>
@@ -58,7 +64,7 @@ class Upcoming_Events extends \WP_Widget {
 			while ( $q->have_posts() ): $q->the_post();
 				?>
                 <li>
-                    <?php the_title() ?> - <?php echo get_post_meta( get_the_ID(), 'date', true  ); ?>
+                    <?php the_title() ?> - <?php echo date( 'd-m-Y', get_post_meta( get_the_ID(), 'date', true ) ); ?>
                 </li><?php
 			endwhile;
 			?></ul><?php
