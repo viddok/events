@@ -28,3 +28,16 @@ require_once 'includes/post-type.php';
 
 // Регистрация метабокса с произвольными полями
 require_once 'includes/meta-box.php';
+
+// Класс виджета
+require_once 'includes/Classes/Upcoming_Events.php';
+
+//use includes\Classes\Upcoming_Events;
+
+/*
+ * регистрация виджета
+ */
+function upcoming_events_load() {
+	register_widget( 'includes\Classes\Upcoming_Events' );
+}
+add_action( 'widgets_init', 'upcoming_events_load' );
