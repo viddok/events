@@ -32,12 +32,14 @@ require_once 'includes/meta-box.php';
 // Класс виджета
 require_once 'includes/Classes/Upcoming_Events.php';
 
-//use includes\Classes\Upcoming_Events;
+// Подключение шорткода
+require_once 'includes/shortcode.php';
 
-/*
- * регистрация виджета
- */
+// Регистрация виджета
 function upcoming_events_load() {
 	register_widget( 'includes\Classes\Upcoming_Events' );
 }
 add_action( 'widgets_init', 'upcoming_events_load' );
+
+// Регистрация шорткода
+add_shortcode('events1', 'events_shortcode');
