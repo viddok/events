@@ -38,17 +38,17 @@ function true_post_type_messages( $messages ) {
 
 	$messages['events'] = array( // events - название созданного нами типа записей
 		0  => '', // Данный индекс не используется.
-		1  => __('Событие обновлено', 'lang' ) . '. <a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . __('Просмотр', 'lang' ) . '</a>',
-		2  => __('Параметр обновлён.', 'lang' ),
-		3  => __('Параметр удалён.', 'lang' ),
-		4  => __('Событие обновлена', 'lang' ),
-		5  => isset( $_GET['revision'] ) ? sprintf( __('Событие восстановлено из редакции:', 'lang' ) . ' %s', wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-		6  => __('Событие опубликовано на сайте', 'lang' ) . '. <a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . __('Просмотр', 'lang' ) . '</a>',
-		7  => __('Событие сохранено.', 'lang' ),
-		8  => __('Отправлено на проверку', 'lang' ) . '. <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . __('Просмотр', 'lang' ) . '</a>',
-		9  => __('Запланировано на публикацию:', 'lang' ) . ' <strong>' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) . '</strong>.'
-		      . '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">' . __('Просмотр', 'lang' ) . '</a>',
-		10 => __('Черновик обновлён', 'lang' ) . '. <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . __('Просмотр', 'lang' ) . '</a>',
+		1  => __( 'Событие обновлено', 'lang' ) . '. <a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . __( 'Просмотр', 'lang' ) . '</a>',
+		2  => __( 'Параметр обновлён.', 'lang' ),
+		3  => __( 'Параметр удалён.', 'lang' ),
+		4  => __( 'Событие обновлена', 'lang' ),
+		5  => isset( $_GET['revision'] ) ? sprintf( __( 'Событие восстановлено из редакции:', 'lang' ) . ' %s', wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+		6  => __( 'Событие опубликовано на сайте', 'lang' ) . '. <a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . __( 'Просмотр', 'lang' ) . '</a>',
+		7  => __( 'Событие сохранено.', 'lang' ),
+		8  => __( 'Отправлено на проверку', 'lang' ) . '. <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . __( 'Просмотр', 'lang' ) . '</a>',
+		9  => __( 'Запланировано на публикацию:', 'lang' ) . ' <strong>' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) . '</strong>.'
+		      . '<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">' . __( 'Просмотр', 'lang' ) . '</a>',
+		10 => __( 'Черновик обновлён', 'lang' ) . '. <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . __( 'Просмотр', 'lang' ) . '</a>',
 	);
 
 	return $messages;
@@ -101,7 +101,7 @@ function true_post_type_help_tab() {
 
 }
 
-// хук для регистрации
+// хук для регистрации таксономии
 add_action('init', 'create_taxonomy');
 function create_taxonomy(){
 	// список параметров:
@@ -138,8 +138,10 @@ function create_taxonomy(){
 		),
 		//'query_var'             => $taxonomy, // название параметра запроса
 		'capabilities'          => array(),
-		'meta_box_cb'           => null, // callback функция. Отвечает за html код метабокса (с версии 3.8): post_categories_meta_box или post_tags_meta_box. Если указать false, то метабокс будет отключен вообще
-		'show_admin_column'     => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
+		'meta_box_cb'           => null, // callback функция. Отвечает за html код метабокса (с версии 3.8):
+		// post_categories_meta_box или post_tags_meta_box. Если указать false, то метабокс будет отключен вообще
+		'show_admin_column'     => true, // Позволить или нет авто-создание колонки таксономии в таблице
+		// ассоциированноготипа записи. (с версии 3.5)
 		'_builtin'              => false,
 		'show_in_quick_edit'    => null, // по умолчанию значение show_ui
 	) );

@@ -39,7 +39,8 @@ require_once 'includes/shortcode.php';
 function upcoming_events_load() {
 	register_widget( 'includes\Classes\Upcoming_Events' );
 }
+
 add_action( 'widgets_init', 'upcoming_events_load' );
 
 // Регистрация шорткода
-add_shortcode('events1', 'events_shortcode');
+add_shortcode( 'events1', 'events_shortcode' );

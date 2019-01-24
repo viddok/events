@@ -3,7 +3,7 @@
 function events_shortcode( $atts ) {
 	$param = shortcode_atts(
 		array(
-			'status'        => 'open',
+			'status'         => 'open',
 			'posts_per_page' => 5,
 		),
 		$atts
