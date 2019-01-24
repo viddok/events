@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Events
-Description: Добавляет на сайт функционал событий. .
+Description: Добавляет на сайт функционал событий. Добавляет виджет с предстоящими собитиями и шорткод для вывода ближайших собтий <strong>[events status="open" posts_per_page="3"]</strong> На любой странице сайта. Параметр <strong>"status"</strong> позволяет фильтровать какие выводить события, принимает значения <strong>open</strong> или <strong>closed</strong>. Параметр <strong>"posts_per_page"</strong> отвечает за кол-во выводимых событий на странице, принимает только целые числа.
 Version: 1.0
 Author: Евгений Родкин
 */
@@ -43,4 +43,4 @@ function upcoming_events_load() {
 add_action( 'widgets_init', 'upcoming_events_load' );
 
 // Регистрация шорткода
-add_shortcode( 'events1', 'events_shortcode' );
+add_shortcode( 'events', 'events_shortcode' );
